@@ -21,7 +21,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    // ArrayList<ACar> cars = new ArrayList<>();
+    ArrayList<Volvo240> cars = new ArrayList<>();
 
     //methods:
 
@@ -29,7 +29,7 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        // cc.cars.add(new Volvo240());
+        cc.cars.add(new Volvo240());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
