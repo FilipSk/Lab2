@@ -42,6 +42,13 @@ public abstract class Vehicle implements Movable{
         return modelName;
     }
 
+    public double getPosX() {
+        return posX;
+    }
+
+    public double getPosY() {
+        return posY;
+    }
 
     public void setColor(Color clr){
         color = clr;
