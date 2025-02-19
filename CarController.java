@@ -21,18 +21,19 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
-    ArrayList<TruckWithBed> trucks = new ArrayList<>();
-
+    ArrayList<Vehicle> vehicles = new ArrayList<>();
+    //ArrayList<TruckWithBed> trucks = new ArrayList<>();
+    Workshop<Volvo240> workshop = new Workshop<>(2);
     //methods:
 
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
-        cc.cars.add(new Saab95());
-        cc.trucks.add(new Scania());
+        cc.vehicles.add(new Volvo240());
+
+        cc.vehicles.add(new Saab95());
+        cc.vehicles.add(new Scania());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -46,28 +47,37 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
-                if(car.getPosX() >= frame.getSize().width - 100){
-                    car.posX =  frame.getSize().width - 100;
-                    car.stopEngine();
-                    car.turnLeft();
-                    car.turnLeft();
-                    car.startEngine();
+            for (Vehicle vehicle : vehicles) {
+                if(vehicle.getPosX() >= frame.getSize().width - 100){
+                    vehicle.posX =  frame.getSize().width - 100;
+                    vehicle.stopEngine();
+                    vehicle.turnLeft();
+                    vehicle.turnLeft();
+                    vehicle.startEngine();
                 }
-                if(car.getPosX() < 0){
-                    car.posX = 0;
-                    car.stopEngine();
-                    car.turnLeft();
-                    car.turnLeft();
-                    car.startEngine();
+                if(vehicle.getPosX() < 0){
+                    vehicle.posX = 0;
+                    vehicle.stopEngine();
+                    vehicle.turnLeft();
+                    vehicle.turnLeft();
+                    vehicle.startEngine();
 
                 }
-                car.move();
-                int x = (int) Math.round(car.getPosX());
-                int y = (int) Math.round(car.getPosY());
 
 
-                frame.drawPanel.moveit(x, y);
+                vehicle.move();
+                int x = (int) Math.round(vehicle.getPosX());
+                int y = (int) Math.round(vehicle.getPosY());
+
+//                if (vehicle instanceof Volvo240 && x > 300 && x < 400) {
+//                    vehicle.stopEngine();
+//                    vehicles.remove(vehicle);
+//                    workshop.loadCar((Volvo240) vehicle);
+//                    continue;
+//                }
+
+
+                frame.drawPanel.moveit(vehicle, x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -77,39 +87,54 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : cars) {
-            car.gas(gas);
+        for (Vehicle vehicle : vehicles) {
+            vehicle.gas(gas);
         }
     }
     void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Car car : cars) {
-            car.brake(brake);
+        for (Vehicle vehicle : vehicles) {
+            vehicle.brake(brake);
         }
     }
     void startAllCars() {
-        for (Car car : cars) {
-            car.startEngine();
+        for (Vehicle vehicle : vehicles) {
+            vehicle.startEngine();
         }
     }
     void stopAllCars() {
-        for (Car car : cars) {
-            car.stopEngine();
+        for (Vehicle vehicle : vehicles) {
+            vehicle.stopEngine();
         }
     }
 
     void turboOn() {
-        for (Car car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOn();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOn();
             }
         }
     }
     void turboOff() {
-        for (Car car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOff();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOff();
             }
         }
     }
+    void liftBed() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Scania) {
+                ((Scania) vehicle).increaseBedAngle(10);
+            }
+        }
+    }
+    void lowerBed() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Scania) {
+                ((Scania) vehicle).decreaseBedAngle(10);
+            }
+        }
+    }
+
 }

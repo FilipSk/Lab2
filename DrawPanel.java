@@ -20,18 +20,22 @@ public class DrawPanel extends JPanel{
     Point scaniaPoint = new Point();
 
     BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300,300);
+    Point volvoWorkshopPoint = new Point(300,0);
 
     // TODO: Make this general for all cars
-    void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
-
-        saabPoint.x = x;
-        saabPoint.y = y + 100;
-
-        scaniaPoint.x = x;
-        scaniaPoint.y = y + 200;
+    void moveit(Vehicle vehicle,int x, int y){
+        if (vehicle instanceof Volvo240) {
+            volvoPoint.x = x;
+            volvoPoint.y = y;
+        }
+        if (vehicle instanceof Saab95) {
+            saabPoint.x = x;
+            saabPoint.y = y + 100;
+        }
+        if (vehicle instanceof Scania) {
+            scaniaPoint.x = x;
+            scaniaPoint.y = y + 200;
+        }
     }
 
     // Initializes the panel and reads the images

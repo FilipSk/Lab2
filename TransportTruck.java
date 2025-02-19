@@ -32,7 +32,7 @@ public class TransportTruck extends Truck{
         if (!rampIsUp){
             throw new IllegalArgumentException("Rampen är uppe!");
         }
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }
 
     @Override
