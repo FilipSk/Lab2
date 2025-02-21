@@ -33,6 +33,9 @@ public class Workshop <T extends Car> {
             throw new IllegalArgumentException("This car not in workshop");
         }
     }
+    public boolean checkIfCarInWorkshop(T car){
+        return cars.contains(car);
+    }
     public int getAmountOfCars(){
         return cars.size();
     }

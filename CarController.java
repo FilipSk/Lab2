@@ -11,8 +11,7 @@ import java.util.ArrayList;
 
 public class CarController {
     // member fields:
-
-    // The delay (ms) corresponds to 20 updates a sec (hz)
+   // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
     // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
@@ -48,6 +47,11 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle vehicle : vehicles) {
+
+                if (vehicle instanceof Volvo240 && workshop.checkIfCarInWorkshop((Volvo240) vehicle)){
+                    continue;
+                }
+
                 if(vehicle.getPosX() >= frame.getSize().width - 100){
                     vehicle.posX =  frame.getSize().width - 100;
                     vehicle.stopEngine();
@@ -69,12 +73,12 @@ public class CarController {
                 int x = (int) Math.round(vehicle.getPosX());
                 int y = (int) Math.round(vehicle.getPosY());
 
-//                if (vehicle instanceof Volvo240 && x > 300 && x < 400) {
-//                    vehicle.stopEngine();
-//                    vehicles.remove(vehicle);
-//                    workshop.loadCar((Volvo240) vehicle);
-//                    continue;
-//                }
+                if (vehicle instanceof Volvo240 && x > 300 && x < 400) {
+                    vehicle.stopEngine();
+                    //vehicles.remove(vehicle);
+                    workshop.loadCar((Volvo240) vehicle);
+                    continue;
+                }
 
 
                 frame.drawPanel.moveit(vehicle, x, y);
