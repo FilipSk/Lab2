@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Stack;
 
 public class TransportTruck extends Truck{

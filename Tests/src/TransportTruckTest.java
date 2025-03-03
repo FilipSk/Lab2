@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -16,7 +17,7 @@ class TransportTruckTest {
         transportTruck.startEngine();
         transportTruck.setRampDown();
         transportTruck.loadCar(volvo240, 1);
-        assertTrue(transportTruck.carStack().contains(volvo240));
+        Assertions.assertTrue(transportTruck.carStack().contains(volvo240));
 
     }
     @Test
@@ -33,15 +34,15 @@ class TransportTruckTest {
         transportTruck.loadCar(volvo240, 1);
         transportTruck.loadCar(volvo240_2, 1);
         transportTruck.deloadCar();
-        assertTrue(transportTruck.carStack().contains(volvo240));
-        assertFalse(transportTruck.carStack().contains(volvo240_2));
+        Assertions.assertTrue(transportTruck.carStack().contains(volvo240));
+        Assertions.assertFalse(transportTruck.carStack().contains(volvo240_2));
     }
 
     @Test
     void rampTests() {
         transportTruck.setRampUp();
         transportTruck.setRampDown();
-        assertFalse(transportTruck.getRampMode());
+        Assertions.assertFalse(transportTruck.getRampMode());
     }
     @Test
     void testPositions() {
@@ -63,11 +64,11 @@ class TransportTruckTest {
 
         //System.out.println(transportTruck.posY);
 
-        assertEquals(volvo240.posY, transportTruck.posY);
-        assertEquals(volvo240.posX, transportTruck.posX);
+        Assertions.assertEquals(volvo240.posY, transportTruck.posY);
+        Assertions.assertEquals(volvo240.posX, transportTruck.posX);
 
-        assertNotEquals(volvoPosY_1, volvo240.posY);
-        assertNotEquals(volvoPosX_1, volvo240.posX);
+        Assertions.assertNotEquals(volvoPosY_1, volvo240.posY);
+        Assertions.assertNotEquals(volvoPosX_1, volvo240.posX);
     }
 
 }

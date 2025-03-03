@@ -31,7 +31,7 @@ public abstract class TruckWithBed extends Truck {
     }
     @Override
     protected void incrementSpeed(double amount) {
-        if (getBedAngle() < getMinBedAngle()){
+        if (getBedAngle() > getMinBedAngle()){
             throw new IllegalArgumentException("Rampen är uppe!");
         }
         currentSpeed = getCurrentSpeed() + speedFactor() * amount;

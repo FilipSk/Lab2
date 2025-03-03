@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,9 +17,9 @@ class ScaniaTest {
         double firstSpeed = scania.getCurrentSpeed();
 
         scania.gas(0.5);
-        assertTrue(scania.getCurrentSpeed() > firstSpeed);
+        Assertions.assertTrue(scania.getCurrentSpeed() > firstSpeed);
 
-        assertThrows(IllegalArgumentException.class, () -> scania.gas(10));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> scania.gas(10));
     }
 
     @Test
@@ -28,6 +28,6 @@ class ScaniaTest {
         double firstSpeed = scania.getCurrentSpeed();
         scania.decrementSpeed(0.05);
 
-        assertTrue(scania.getCurrentSpeed() < firstSpeed);
+        Assertions.assertTrue(scania.getCurrentSpeed() < firstSpeed);
     }
 }

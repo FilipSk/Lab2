@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +10,7 @@ class Volvo240Test {
         volvo.startEngine();
         double firstSpeed = volvo.getCurrentSpeed();
         volvo.incrementSpeed(0.4);
-        assertTrue(volvo.getCurrentSpeed() > firstSpeed);
+        Assertions.assertTrue(volvo.getCurrentSpeed() > firstSpeed);
     }
 
     @Test
@@ -18,8 +19,8 @@ class Volvo240Test {
         double firstSpeed = volvo.getCurrentSpeed();
 
         volvo.gas(0.5);
-        assertTrue(volvo.getCurrentSpeed() > firstSpeed);
+        Assertions.assertTrue(volvo.getCurrentSpeed() > firstSpeed);
 
-        assertThrows(IllegalArgumentException.class, () -> volvo.gas(10));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> volvo.gas(10));
     }
 }

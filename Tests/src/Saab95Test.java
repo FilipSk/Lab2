@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +15,7 @@ class Saab95Test {
         //System.out.println(firstSpeed);
         //System.out.println(saab.getCurrentSpeed());
 
-        assertTrue(saab.getCurrentSpeed() < firstSpeed);
+        Assertions.assertTrue(saab.getCurrentSpeed() < firstSpeed);
     }
 
     @Test
@@ -24,6 +25,6 @@ class Saab95Test {
         saab.gas(0.8);
         saab.brake(0.9);
 
-        assertTrue(saab.getCurrentSpeed() < firstSpeed);
+        Assertions.assertTrue(saab.getCurrentSpeed() < firstSpeed);
     }
 }

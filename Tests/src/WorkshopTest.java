@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +16,9 @@ class WorkshopTest {
         Volvo240 volvo = new Volvo240();
         workshorp.loadCar(volvo);
 
-        assertTrue(workshorp.getAmountOfCars() == 1);
+        Assertions.assertTrue(workshorp.getAmountOfCars() == 1);
 
-        assertThrows(IllegalArgumentException.class, () -> workshorp.loadCar(volvo));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> workshorp.loadCar(volvo));
 
     }
     @Test
@@ -26,10 +27,10 @@ class WorkshopTest {
         Volvo240 volvo = new Volvo240();
 
         workshorp.loadCar(volvo);
-        assertTrue(workshorp.getAmountOfCars() == 1);
+        Assertions.assertTrue(workshorp.getAmountOfCars() == 1);
 
         workshorp.deloadCar(volvo);
-        assertTrue(workshorp.getAmountOfCars() == 0);
+        Assertions.assertTrue(workshorp.getAmountOfCars() == 0);
 
 
 

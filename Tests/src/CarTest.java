@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,19 +17,19 @@ class CarTest {
     @Test
     void getNrDoors() {
 
-        assertEquals(4, volvo.getNrDoors());
-        assertEquals(2, saab.getNrDoors());
+        Assertions.assertEquals(4, volvo.getNrDoors());
+        Assertions.assertEquals(2, saab.getNrDoors());
 
     }
     @Test
     void getEnginePower() {
-        assertEquals(100, volvo.getEnginePower());
-        assertEquals(125, saab.getEnginePower());
+        Assertions.assertEquals(100, volvo.getEnginePower());
+        Assertions.assertEquals(125, saab.getEnginePower());
     }
     @Test
     void getColor() {
-        assertEquals(Color.black, volvo.getColor());
-        assertEquals(Color.red, saab.getColor());
+        Assertions.assertEquals(Color.black, volvo.getColor());
+        Assertions.assertEquals(Color.red, saab.getColor());
     }
 
     @Test
@@ -40,7 +41,7 @@ class CarTest {
         volvo.turnLeft();
         volvo.move();
         volvo.turnRight();
-        assertNotEquals(firstX, volvo.posX);
-        assertNotEquals(firstY, volvo.posY);
+        Assertions.assertNotEquals(firstX, volvo.posX);
+        Assertions.assertNotEquals(firstY, volvo.posY);
     }
 }

@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -23,6 +25,8 @@ public class DrawPanel extends JPanel{
     Point volvoWorkshopPoint = new Point(300,0);
 
     // TODO: Make this general for all cars
+
+    // Göra detta så att den går igenom en lista med vehicles
     void moveit(Vehicle vehicle,int x, int y){
         if (vehicle instanceof Volvo240) {
             volvoPoint.x = x;
@@ -38,11 +42,16 @@ public class DrawPanel extends JPanel{
         }
     }
 
+    ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, ArrayList<Vehicle> vehicles) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
+        this.vehicles = vehicles;
+
+
         // Print an error message in case file is not found with a try/catch block
         try {
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
@@ -63,11 +72,22 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+        for (int i = 0; i < vehicles.size(); i++) {
+            if (Objects.equals(vehicles.get(i).getname(), "Volvo240")) {
+                g.drawImage(volvoImage, (int)vehicles.get(i).getPosX(), (int)vehicles.get(i).getPosY(), null); // see javadoc for more info on the parameters
+            } else if (Objects.equals(vehicles.get(i).getname(), "Saab95")) {
+                g.drawImage(saabImage, (int)vehicles.get(i).getPosX(), (int)vehicles.get(i).getPosY(), null); // see javadoc for more info on the parameters
+            } else if (Objects.equals(vehicles.get(i).getname(), "Scania")) {
+                g.drawImage(scaniaImage, (int)vehicles.get(i).getPosX(), (int)vehicles.get(i).getPosY(), null); // see javadoc for more info on the parameters
+            }
+
+        }
         g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
 
-        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
-
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
+//        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+//
+//        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
+//
+//        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
     }
 }
