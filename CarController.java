@@ -124,4 +124,20 @@ public class CarController implements CarInterface {
         }
     }
 
+    public void addCar(int index) {
+        if (index == 0) {
+            vehicles.add(VehicleFactory.CreateVolvo());
+        }
+        else if (index == 1) {
+            vehicles.add(VehicleFactory.CreateSaab());
+        }
+        else if (index == 2) {
+            vehicles.add(VehicleFactory.CreateScania());
+        }
+    }
+
+    public void removeCar() {
+
+    }
+
 }

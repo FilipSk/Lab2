@@ -7,4 +7,6 @@ public interface CarInterface {
     void turboOff();
     void liftBed();
     void lowerBed();
+    void addCar(int selectedIndex);
+    void removeCar();
 }
