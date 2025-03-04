@@ -11,11 +11,7 @@ import java.util.ArrayList;
 
 public class CarController implements CarInterface {
     // member fields:
-   // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-    // The timer is started with a listener (see below) that executes the statements
-    // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
+        //
 
     // A list of cars, modify if needed
     public ArrayList<Vehicle> vehicles = new ArrayList<>();
@@ -25,9 +21,8 @@ public class CarController implements CarInterface {
     //CarView frame;
 
     public CarController() {
-
+        // TODO: Ändra så att vehicles läggs till i en metod / och kan läggas till vid anrop
         vehicles.add(VehicleFactory.CreateVolvo());
-
         vehicles.add(VehicleFactory.CreateSaab());
         vehicles.add(VehicleFactory.CreateScania());
 
@@ -77,7 +72,6 @@ public class CarController implements CarInterface {
         for (Vehicle vehicle : vehicles) {
             try{
                 vehicle.gas(gas);
-
             }
             catch (Exception e){
                 continue;
