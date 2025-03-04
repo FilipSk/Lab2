@@ -92,10 +92,8 @@ public class CarView extends JFrame {
         controlPanel.add(turboOnButton, 1);
         controlPanel.add(liftBedButton, 2);
         controlPanel.add(newCarButton, 3);
-        controlPanel.add(brakeButton, 4);
-        controlPanel.add(carList, 5);
-        controlPanel.setPreferredSize(new Dimension((X/2)+4, 400));
-        controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
+        controlPanel.add(carList, 4);
+        controlPanel.add(brakeButton, 5);
         controlPanel.add(turboOffButton, 6);
         controlPanel.add(lowerBedButton, 7);
         controlPanel.add(removeCarButton, 8);
@@ -114,7 +112,7 @@ public class CarView extends JFrame {
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
 
-        carList.setVisible(false);
+        carList.setVisible(true);
 
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
@@ -170,13 +168,14 @@ public class CarView extends JFrame {
         newCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carList.setVisible(true);
+
+                carInterface.addCar(carList.getSelectedIndex());
             }
         });
         removeCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carInterface.removeCar();
+                carInterface.removeCar(carList.getSelectedIndex());
             }
         });
 

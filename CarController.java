@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -136,8 +137,34 @@ public class CarController implements CarInterface {
         }
     }
 
-    public void removeCar() {
+    public void removeCar(int index) {
 
+        if (index == 0) {
+            System.out.println("Hejejejejej");
+            for (int i = vehicles.size()-1; i >= 0; i--) {
+                if (vehicles.get(i) instanceof Volvo240) {
+                    vehicles.remove(vehicles.get(i));
+                    break;
+                }
+            }
+        }
+        else if (index == 1) {
+            System.out.println("Hejejejejej");
+            for (int i = vehicles.size() - 1; i >= 0; i--) {
+                if (vehicles.get(i) instanceof Saab95) {
+                    vehicles.remove(vehicles.get(i));
+                    break;
+                }
+            }
+        }
+        else if (index == 2) {
+            for (int i = vehicles.size() - 1; i >= 0; i--) {
+                if (vehicles.get(i) instanceof Scania) {
+                    vehicles.remove(vehicles.get(i));
+                    break;
+                }
+            }
+        }
     }
 
 }
