@@ -138,7 +138,6 @@ public class CarController implements CarInterface {
     }
 
     public void removeCar(int index) {
-
         if (index == 0) {
             System.out.println("Hejejejejej");
             for (int i = vehicles.size()-1; i >= 0; i--) {
