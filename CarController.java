@@ -144,6 +144,7 @@ public class CarController implements CarInterface {
                 if (vehicles.get(i) instanceof Volvo240){
                     vehicles.remove(vehicles.get(i));
                     // hej
+                    // hej
                     break;
                 }
             }
