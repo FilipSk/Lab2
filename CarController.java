@@ -15,7 +15,8 @@ public class CarController implements CarInterface, UpdateInterface {
     private ArrayList<Vehicle> vehicles;
     private Workshop<Volvo240> workshop;
 
-    int frameWidth = 800;
+    int frameWidth = CarView.X;
+    int frameHeight = CarView.Y;
     public CarController(ArrayList<Vehicle> vehicles, Workshop<Volvo240> workshop) {
         this.vehicles = vehicles;
         this.workshop = workshop;
@@ -132,12 +133,9 @@ public class CarController implements CarInterface, UpdateInterface {
 
     public void removeCar(int index) {
         if (index == 0) {
-            System.out.println("Hejejejejej");
             for (int i = vehicles.size()-1; i >= 0; i--) {
                 if (vehicles.get(i) instanceof Volvo240){
                     vehicles.remove(vehicles.get(i));
-                    // hej
-                    // hej
                     break;
                 }
             }

@@ -15,8 +15,8 @@ import java.util.ArrayList;
  **/
 
 public class CarView extends JFrame implements UpdateInterface{
-    private static final int X = 800;
-    private static final int Y = 800;
+    public static final int X = 800;
+    public static final int Y = 800;
 
 
     // The controller member

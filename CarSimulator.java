@@ -11,17 +11,13 @@ public class CarSimulator{
     private final int delay = 50;
     private Timer timer;
 
-    private ArrayList<Vehicle> vehicles;
-    private Workshop<Volvo240> workshop;
+    private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+    private Workshop<Volvo240> workshop = new Workshop<Volvo240>(2);
 
-    private CarController cc;
-    private CarView view;
+    private CarController cc = new CarController(vehicles, workshop);
+    private CarView view = new CarView("Forza Horizon 7", cc, vehicles);
 
     public CarSimulator(){
-        vehicles = new ArrayList<Vehicle>();
-        workshop = new Workshop<Volvo240>(2);
-        cc = new CarController(vehicles, workshop);
-        view = new CarView("Forza Horizon 7", cc, vehicles);
 
         vehicles.add(VehicleFactory.CreateVolvo());
         vehicles.add(VehicleFactory.CreateSaab());
@@ -38,6 +34,5 @@ public class CarSimulator{
             cc.Update();
             view.Update();
         }
-
     }
 }
