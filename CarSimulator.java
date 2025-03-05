@@ -14,15 +14,13 @@ public class CarSimulator{
     private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
     private Workshop<Volvo240> workshop = new Workshop<Volvo240>(2);
 
-    private CarController cc = new CarController(vehicles, workshop);
+    private CarController cc = new CarController(vehicles, workshop,CarView.X);
     private CarView view = new CarView("Forza Horizon 7", cc, vehicles);
 
     public CarSimulator(){
-
-        vehicles.add(VehicleFactory.CreateVolvo());
-        vehicles.add(VehicleFactory.CreateSaab());
-        vehicles.add(VehicleFactory.CreateScania());
-
+        cc.addCar(0);
+        cc.addCar(1);
+        cc.addCar(2);
     }
     public void Start(){
         timer = new Timer(delay, new CarSimulator.TimerListener());

@@ -7,5 +7,4 @@ public class Application {
         CarSimulator carSim = new CarSimulator();
         carSim.Start();
     }
-
 }

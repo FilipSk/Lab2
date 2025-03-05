@@ -16,10 +16,10 @@ public class CarController implements CarInterface, UpdateInterface {
     private Workshop<Volvo240> workshop;
 
     int frameWidth = CarView.X;
-    int frameHeight = CarView.Y;
-    public CarController(ArrayList<Vehicle> vehicles, Workshop<Volvo240> workshop) {
+    public CarController(ArrayList<Vehicle> vehicles, Workshop<Volvo240> workshop, int frameWidth) {
         this.vehicles = vehicles;
         this.workshop = workshop;
+        this.frameWidth = frameWidth;
     }
     @Override
     public void Update(){
@@ -119,7 +119,15 @@ public class CarController implements CarInterface, UpdateInterface {
         }
     }
 
+    /**
+     * Lägger till bil
+     * @param index 0 för Volvo, 1 för Saab, 2 för Scania
+     */
     public void addCar(int index) {
+        if (vehicles.size() >= 6) {
+            return;
+        }
+
         if (index == 0) {
             vehicles.add(VehicleFactory.CreateVolvo());
         }
