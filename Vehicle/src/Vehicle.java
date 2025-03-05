@@ -4,12 +4,13 @@ public abstract class Vehicle implements Movable{
 
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
-    protected double currentSpeed; // The current speed of the car
+    private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
-    protected double posX;
-    protected double posY;
+    private double posX;
+    private double posY;
 
+    // 0 : Öster, 1 : Söder, 2 : Väster, 3 : Norr
     private int direction;
     private int[] directionX = {1,0,-1,0 };
     private int[] directionY = {0,-1,0,1 };
@@ -31,9 +32,15 @@ public abstract class Vehicle implements Movable{
         return enginePower;
     }
 
+
+    public void setCurrentSpeed(double newSpeed){
+        currentSpeed = newSpeed;
+    }
+
     public double getCurrentSpeed(){
         return currentSpeed;
     }
+
 
     public Color getColor(){
         return color;
@@ -45,9 +52,14 @@ public abstract class Vehicle implements Movable{
     public double getPosX() {
         return posX;
     }
-
     public double getPosY() {
         return posY;
+    }
+    public void setPosX(double newPosX) {
+        posX = newPosX;
+    }
+    public void setPosY(double newPosY) {
+        posY = newPosY;
     }
 
     public void setColor(Color clr){

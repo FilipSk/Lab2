@@ -35,13 +35,13 @@ class CarTest {
     @Test
     void turnLeft() {
         volvo.startEngine();
-        double firstY = volvo.posY;
-        double firstX = volvo.posX;
+        double firstY = volvo.getPosY();
+        double firstX = volvo.getPosX();
         volvo.move();
         volvo.turnLeft();
         volvo.move();
         volvo.turnRight();
-        Assertions.assertNotEquals(firstX, volvo.posX);
-        Assertions.assertNotEquals(firstY, volvo.posY);
+        Assertions.assertNotEquals(firstX, volvo.getPosX());
+        Assertions.assertNotEquals(firstY, volvo.getPosY());
     }
 }

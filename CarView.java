@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame {
+public class CarView extends JFrame implements UpdateInterface{
     private static final int X = 800;
     private static final int Y = 800;
 
@@ -53,8 +53,10 @@ public class CarView extends JFrame {
         this.drawPanel = new DrawPanel(X, Y-240, vehicles);
         initComponents(framename);
     }
+
+    @Override
     public void Update(){
-        drawPanel.repaint();
+        drawPanel.Update();
     }
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work

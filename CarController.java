@@ -10,40 +10,33 @@ import java.util.Scanner;
 * modifying the model state and the updating the view.
  */
 
-public class CarController implements CarInterface {
-    // member fields:
-        //
+public class CarController implements CarInterface, UpdateInterface {
 
-    // A list of cars, modify if needed
-    public ArrayList<Vehicle> vehicles = new ArrayList<>();
-    //ArrayList<TruckWithBed> trucks = new ArrayList<>();
-    Workshop<Volvo240> workshop = new Workshop<>(2);
-    //methods:
-    //CarView frame;
+    private ArrayList<Vehicle> vehicles;
+    private Workshop<Volvo240> workshop;
 
-    public CarController() {
-        // TODO: Ändra så att vehicles läggs till i en metod / och kan läggas till vid anrop
-        vehicles.add(VehicleFactory.CreateVolvo());
-        vehicles.add(VehicleFactory.CreateSaab());
-        vehicles.add(VehicleFactory.CreateScania());
-
-
+    int frameWidth = 800;
+    public CarController(ArrayList<Vehicle> vehicles, Workshop<Volvo240> workshop) {
+        this.vehicles = vehicles;
+        this.workshop = workshop;
     }
-    public void Update(int frameWidth){
+    @Override
+    public void Update(){
         for (int i = 0; i < vehicles.size(); i++) {
             if (vehicles.get(i) instanceof Volvo240 && workshop.checkIfCarInWorkshop((Volvo240) vehicles.get(i))){
                 continue;
             }
 
             if(vehicles.get(i).getPosX() >= frameWidth - 100){
-                vehicles.get(i).posX =  frameWidth - 100;
+                vehicles.get(i).setPosX(frameWidth - 100);
                 vehicles.get(i).stopEngine();
                 vehicles.get(i).turnLeft();
                 vehicles.get(i).turnLeft();
                 vehicles.get(i).startEngine();
             }
             if(vehicles.get(i).getPosX() < 0){
-                vehicles.get(i).posX = 0;
+                vehicles.get(i).setPosX(0);
+
                 vehicles.get(i).stopEngine();
                 vehicles.get(i).turnLeft();
                 vehicles.get(i).turnLeft();
@@ -51,7 +44,7 @@ public class CarController implements CarInterface {
 
             }
             // TODO: lägg till så att bilarna inte åker ur skärmen.
-            vehicles.get(i).posY = 100 * i;
+            vehicles.get(i).setPosY(100 * i);
 
             vehicles.get(i).move();
             int x = (int) Math.round(vehicles.get(i).getPosX());
@@ -167,5 +160,4 @@ public class CarController implements CarInterface {
             }
         }
     }
-
 }

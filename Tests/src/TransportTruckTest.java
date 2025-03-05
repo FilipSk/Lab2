@@ -50,8 +50,8 @@ class TransportTruckTest {
         transportTruck.startEngine();
         transportTruck.setRampDown();
         transportTruck.loadCar(volvo240, 1);
-        double volvoPosY_1 = volvo240.posY;
-        double volvoPosX_1 = volvo240.posX;
+        double volvoPosY_1 = volvo240.getPosY();
+        double volvoPosX_1 = volvo240.getPosX();
 
         transportTruck.setRampUp();
         transportTruck.gas(0.8);
@@ -64,11 +64,11 @@ class TransportTruckTest {
 
         //System.out.println(transportTruck.posY);
 
-        Assertions.assertEquals(volvo240.posY, transportTruck.posY);
-        Assertions.assertEquals(volvo240.posX, transportTruck.posX);
+        Assertions.assertEquals(volvo240.getPosY(), transportTruck.getPosY());
+        Assertions.assertEquals(volvo240.getPosX(), transportTruck.getPosX());
 
-        Assertions.assertNotEquals(volvoPosY_1, volvo240.posY);
-        Assertions.assertNotEquals(volvoPosX_1, volvo240.posX);
+        Assertions.assertNotEquals(volvoPosY_1, volvo240.getPosY());
+        Assertions.assertNotEquals(volvoPosX_1, volvo240.getPosX());
     }
 
 }

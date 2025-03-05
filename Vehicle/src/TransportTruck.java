@@ -23,7 +23,7 @@ public class TransportTruck extends Truck{
         if (!rampIsUp){
             throw new IllegalArgumentException("Rampen är uppe!");
         }
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class TransportTruck extends Truck{
         if (!rampIsUp){
             throw new IllegalArgumentException("Rampen är uppe!");
         }
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
 
     @Override
@@ -47,8 +47,8 @@ public class TransportTruck extends Truck{
         return this.getEnginePower() / 100;
     }
     private void setCarPos(Car car){
-        car.posX = this.posX;
-        car.posY = this.posY;
+        car.setPosX(getPosX());
+        car.setPosY(getPosY());
     }
     public void loadCar(Car car, double distance) {
         if (car.getSize() <= maxCarSize || distance <= maxDistance ||

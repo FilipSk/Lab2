@@ -34,7 +34,7 @@ public abstract class TruckWithBed extends Truck {
         if (getBedAngle() > getMinBedAngle()){
             throw new IllegalArgumentException("Rampen är uppe!");
         }
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
     }
 
     @Override
@@ -42,7 +42,7 @@ public abstract class TruckWithBed extends Truck {
         if (getBedAngle() > getMaxBedAngle()){
             throw new IllegalArgumentException("Rampen är uppe!");
         }
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
 
     }
 

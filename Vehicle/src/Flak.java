@@ -17,13 +17,13 @@ public abstract class Flak extends Vehicle{
     }
 
     public void increaseBedAnge(){
-        if (currentSpeed != 0){
+        if (getCurrentSpeed() != 0){
             return;
         }
         bedAngle = maxBedAngle;
     }
     public void decreaseBedAngle(){
-        if (currentSpeed != 0){
+        if (getCurrentSpeed() != 0){
             return;
         }
         bedAngle = minBedAngle;

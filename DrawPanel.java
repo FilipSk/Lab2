@@ -9,7 +9,7 @@ import javax.swing.*;
 
 // This panel represents the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel implements UpdateInterface{
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
@@ -42,7 +42,7 @@ public class DrawPanel extends JPanel{
         }
     }
 
-    ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+    ArrayList<Vehicle> vehicles;
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y, ArrayList<Vehicle> vehicles) {
@@ -68,7 +68,6 @@ public class DrawPanel extends JPanel{
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -83,11 +82,10 @@ public class DrawPanel extends JPanel{
 
         }
         g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+    }
 
-//        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-//
-//        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
-//
-//        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
+    @Override
+    public void Update() {
+        repaint();
     }
 }
