@@ -141,8 +141,9 @@ public class CarController implements CarInterface {
         if (index == 0) {
             System.out.println("Hejejejejej");
             for (int i = vehicles.size()-1; i >= 0; i--) {
-                if (vehicles.get(i) instanceof Volvo240) {
+                if (vehicles.get(i) instanceof Volvo240){
                     vehicles.remove(vehicles.get(i));
+                    // hej
                     break;
                 }
             }
