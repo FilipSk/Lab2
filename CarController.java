@@ -15,7 +15,8 @@ public class CarController implements CarInterface, UpdateInterface {
     private ArrayList<Vehicle> vehicles;
     private Workshop<Volvo240> workshop;
 
-    int frameWidth = CarView.X;
+    private final int frameWidth;
+
     public CarController(ArrayList<Vehicle> vehicles, Workshop<Volvo240> workshop, int frameWidth) {
         this.vehicles = vehicles;
         this.workshop = workshop;
@@ -44,7 +45,7 @@ public class CarController implements CarInterface, UpdateInterface {
                 vehicles.get(i).startEngine();
 
             }
-            // TODO: lägg till så att bilarna inte åker ur skärmen.
+
             vehicles.get(i).setPosY(100 * i);
 
             vehicles.get(i).move();
@@ -149,7 +150,6 @@ public class CarController implements CarInterface, UpdateInterface {
             }
         }
         else if (index == 1) {
-            System.out.println("Hejejejejej");
             for (int i = vehicles.size() - 1; i >= 0; i--) {
                 if (vehicles.get(i) instanceof Saab95) {
                     vehicles.remove(vehicles.get(i));

@@ -12,32 +12,32 @@ public class CarView extends JFrame implements UpdateInterface{
 
 
     // The controller member
-    CarInterface carInterface;
+    private CarInterface carInterface;
 
-    DrawPanel drawPanel;
+    private DrawPanel drawPanel;
 
-    JPanel controlPanel = new JPanel();
+    private JPanel controlPanel = new JPanel();
 
-    JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
-    int gasAmount = 0;
-    JLabel gasLabel = new JLabel("Amount of gas");
+    private JPanel gasPanel = new JPanel();
+    private JSpinner gasSpinner = new JSpinner();
+    private int gasAmount = 0;
+    private JLabel gasLabel = new JLabel("Amount of gas");
 
-    JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
-    JButton newCarButton = new JButton("Spawn Car");
-    JButton removeCarButton = new JButton("Remove Car");
+    private JButton gasButton = new JButton("Gas");
+    private JButton brakeButton = new JButton("Brake");
+    private JButton turboOnButton = new JButton("Saab Turbo on");
+    private JButton turboOffButton = new JButton("Saab Turbo off");
+    private JButton liftBedButton = new JButton("Scania Lift Bed");
+    private JButton lowerBedButton = new JButton("Lower Lift Bed");
+    private JButton newCarButton = new JButton("Spawn Car");
+    private JButton removeCarButton = new JButton("Remove Car");
 
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
+    private JButton startButton = new JButton("Start all cars");
+    private JButton stopButton = new JButton("Stop all cars");
 
 
-    String[] carStringList = {"Volvo 240", "Saab 95", "Scania"};
-    JComboBox<String> carList = new JComboBox<>(carStringList);
+    private String[] carStringList = {"Volvo 240", "Saab 95", "Scania"};
+    private JComboBox<String> carList = new JComboBox<>(carStringList);
 
     // Constructor
     public CarView(String framename, CarInterface cc,ArrayList<Vehicle> vehicles){
@@ -109,7 +109,6 @@ public class CarView extends JFrame implements UpdateInterface{
         carList.setVisible(true);
 
         // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

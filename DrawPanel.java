@@ -11,38 +11,14 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel implements UpdateInterface{
 
-    // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
-    BufferedImage saabImage;
-    BufferedImage scaniaImage;
+    private BufferedImage volvoImage;
+    private BufferedImage saabImage;
+    private BufferedImage scaniaImage;
 
-    // To keep track of a single car's position
-    Point volvoPoint = new Point();
-    Point saabPoint = new Point();
-    Point scaniaPoint = new Point();
+    private BufferedImage volvoWorkshopImage;
+    private Point volvoWorkshopPoint = new Point(300,0);
 
-    BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300,0);
-
-    // TODO: Make this general for all cars
-
-    // Göra detta så att den går igenom en lista med vehicles
-    void moveit(Vehicle vehicle,int x, int y){
-        if (vehicle instanceof Volvo240) {
-            volvoPoint.x = x;
-            volvoPoint.y = y;
-        }
-        if (vehicle instanceof Saab95) {
-            saabPoint.x = x;
-            saabPoint.y = y + 100;
-        }
-        if (vehicle instanceof Scania) {
-            scaniaPoint.x = x;
-            scaniaPoint.y = y + 200;
-        }
-    }
-
-    ArrayList<Vehicle> vehicles;
+    private ArrayList<Vehicle> vehicles;
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y, ArrayList<Vehicle> vehicles) {
